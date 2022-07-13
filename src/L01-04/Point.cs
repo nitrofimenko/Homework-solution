@@ -8,8 +8,6 @@ namespace L01_04
 {
     internal class Point
     {
-        int x, y;
-        string name;
         public int X { get; }
         public int Y { get; }
         public string Name { get; }
