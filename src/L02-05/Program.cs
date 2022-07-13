@@ -21,8 +21,27 @@ do
 
     if (choose == "1" && usersNumber != CAPACITY)
     {
-        users[usersNumber] = new User();
+        Console.WriteLine("Creation new user");
+
+        Console.Write("Input new user login: ");
+        string login = Console.ReadLine();
+
+        Console.Write("Input new user first name: ");
+        string firstName = Console.ReadLine();
+
+        Console.Write("Input new user last name: ");
+        string lastName = Console.ReadLine();
+
+        int age = 0;
+        do
+        {
+            Console.Write("Input new user age (integer number): ");
+        } while (!int.TryParse(Console.ReadLine(), out age) || age <= 0); ;
+
+        users[usersNumber] = new User(login, firstName, lastName, age);
+
         Console.WriteLine($"User #{usersNumber} was succesfully created\n");
+
         usersNumber++;
     }
     else if (choose == "2" && usersNumber > 0)
@@ -41,6 +60,7 @@ do
         {
             Console.Write($"\nInput user number from 0 to {usersNumber - 1}: ");
         } while (!int.TryParse(Console.ReadLine(), out userNumber) || userNumber < 0 || userNumber >= usersNumber);
+        
         Console.WriteLine($"About user #{userNumber} information");
         users[userNumber].Show();
         Console.WriteLine();
