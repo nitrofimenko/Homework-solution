@@ -8,25 +8,25 @@ namespace L02_05
 {
     internal class User
     {
-        string Login { get; set; }
-        string FirstName { get; set; }
-        string LastName { get; set; }
-        int Age { get; set; }
-        DateTime FormFillingDate { get; }
-        public User(string login, string firstName, string lastName, int age)
+        string login;
+        string firstName;
+        string lastName;
+        int age;
+        readonly DateTime formFillingDate;
+        public User(string userLogin, string userFirstName, string userLastName, int userAge)
         {
-            Login = login;
-            FirstName = firstName;
-            LastName = lastName;
-            Age = age;
-            FormFillingDate = DateTime.Now;
+            login = userLogin;
+            firstName = userFirstName;
+            lastName = userLastName;
+            age = userAge;
+            formFillingDate = DateTime.Now;
         }
         public void Show()
         {
-            Console.WriteLine($"Login:             {Login}");
-            Console.WriteLine($"First name:        {FirstName}");
-            Console.WriteLine($"Second name:       {LastName}");
-            Console.WriteLine($"Age on {FormFillingDate:dd.MM.yyyy}: {Age}");
+            Console.WriteLine($"Login:             {login}");
+            Console.WriteLine($"First name:        {firstName}");
+            Console.WriteLine($"Second name:       {lastName}");
+            Console.WriteLine($"Age on {formFillingDate:dd.MM.yyyy}: {age}");
         }
     }
 }
