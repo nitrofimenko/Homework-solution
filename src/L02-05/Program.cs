@@ -1,6 +1,7 @@
 ﻿using L02_05;
 
 const int CAPACITY = 100;
+UserFactory userFactory = new UserFactory();
 User[] users = new User[CAPACITY];
 int usersNumber = 0;
 do
@@ -23,22 +24,7 @@ do
     {
         Console.WriteLine("Creation new user");
 
-        Console.Write("Input new user login: ");
-        string login = Console.ReadLine();
-
-        Console.Write("Input new user first name: ");
-        string firstName = Console.ReadLine();
-
-        Console.Write("Input new user last name: ");
-        string lastName = Console.ReadLine();
-
-        int age = 0;
-        do
-        {
-            Console.Write("Input new user age (integer number): ");
-        } while (!int.TryParse(Console.ReadLine(), out age) || age <= 0); ;
-
-        users[usersNumber] = new User(login, firstName, lastName, age);
+        users[usersNumber] = userFactory.CreateUser();
 
         Console.WriteLine($"User #{usersNumber} was succesfully created\n");
 
@@ -60,7 +46,7 @@ do
         {
             Console.Write($"\nInput user number from 0 to {usersNumber - 1}: ");
         } while (!int.TryParse(Console.ReadLine(), out userNumber) || userNumber < 0 || userNumber >= usersNumber);
-        
+
         Console.WriteLine($"About user #{userNumber} information");
         users[userNumber].Show();
         Console.WriteLine();
