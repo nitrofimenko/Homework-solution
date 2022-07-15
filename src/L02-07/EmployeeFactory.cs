@@ -1,0 +1,48 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace L02_07
+{
+    internal class EmployeeFactory
+    {
+        public Employee CreateEmployee()
+        {
+            Console.WriteLine("Input new employee data");
+            Console.Write("First name: ");
+            string firstName = Console.ReadLine();
+
+            Console.Write("Last name: ");
+            string lastName = Console.ReadLine();
+
+            Employee newEmployee = new Employee(firstName, lastName);
+
+            string[] positions = { "Junior", "Middle", "Senior", "TeamLead", "Architect" };
+
+            int choose = 0;
+            do
+            {
+                Console.WriteLine($"Position. Input one number from 0 to {positions.Length}: ");
+                for (int i = 0; i < positions.Length; i++)
+                {
+                    Console.WriteLine($"{i} - {positions[i]}");
+                }
+                Console.Write("Position: ");
+            } while (!int.TryParse(Console.ReadLine(), out choose) || choose < 0 || choose >= positions.Length);
+            newEmployee.Position = positions[choose];
+
+            int experience = -1;
+            do
+            {
+                Console.Write("Experience in years (number): ");
+            } while (!int.TryParse(Console.ReadLine(), out experience) || experience < 0);
+            newEmployee.Experience = experience;
+
+            newEmployee.CountSalaryAndTax();
+
+            return newEmployee;
+        }
+    }
+}
