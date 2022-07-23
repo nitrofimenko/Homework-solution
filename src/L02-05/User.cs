@@ -8,36 +8,24 @@ namespace L02_05
 {
     internal class User
     {
-        string login = "";
-        string firstName = "";
-        string secondName = "";
+        string login;
+        string firstName;
+        string lastName;
         int age;
         readonly DateTime formFillingDate;
-        public User()
+        public User(string userLogin, string userFirstName, string userLastName, int userAge)
         {
-            Console.WriteLine("Creation new user");
-
-            Console.Write("Input new user login: ");
-            login = Console.ReadLine();
-
-            Console.Write("Input new user first name: ");
-            firstName = Console.ReadLine();
-
-            Console.Write("Input new user second name: ");
-            secondName = Console.ReadLine();
-
-            do
-            {
-                Console.Write("Input new user age (integer number): ");
-            } while (!int.TryParse(Console.ReadLine(), out age) || age <= 0); ;
-
+            login = userLogin;
+            firstName = userFirstName;
+            lastName = userLastName;
+            age = userAge;
             formFillingDate = DateTime.Now;
         }
         public void Show()
         {
             Console.WriteLine($"Login:             {login}");
             Console.WriteLine($"First name:        {firstName}");
-            Console.WriteLine($"Second name:       {secondName}");
+            Console.WriteLine($"Second name:       {lastName}");
             Console.WriteLine($"Age on {formFillingDate:dd.MM.yyyy}: {age}");
         }
     }
