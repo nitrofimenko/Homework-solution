@@ -20,33 +20,43 @@ namespace L02_07
             this.firstName = firstName;
             this.lastName = lastName;
         }
-
-        public void CountSalaryAndTax()
+        public void SetPosition(int positionNumber)
         {
-            string[] positions = { "Junior", "Middle", "Senior", "TeamLead", "Architect" };
-            double[] salaries = { 300, 2000, 3000, 5000, 6700 };
-            for (int i = 0; i < positions.Length; i++)
+            Position = Common.positions[positionNumber];
+            if (Experience != null && Position != null)
             {
-                if (Position == positions[i])
+                CountSalaryAndTax();
+            }
+        }
+
+        public void SetExperience(double experience)
+        {
+            Experience=experience;
+            if (Position != null && Experience!=null)
+            {
+                CountSalaryAndTax();
+            }
+        }
+        private void CountSalaryAndTax()
+        {
+            for (int i = 0; i < Common.positions.Length; i++)
+            {
+                if (Position == Common.positions[i])
                 {
-                    salary = salaries[i];
+                    salary = Common.salaries[i];
                     break;
                 }
             }
-            double[] experiences = { 0, 5, 10, 15, 20, 25 };
-            double[] allowance = { 1, 1.05, 1.1, 1.15, 1.2, 1.25 };
-            for (int i = 0; i < allowance.Length; i++)
+            for (int i = 0; i < Common.allowance.Length; i++)
             {
-                if (Experience >= experiences[allowance.Length - 1 - i])
+                if (Experience >= Common.experiences[Common.allowance.Length - 1 - i])
                 {
-                    salary = Math.Round(salary * allowance[allowance.Length - 1 - i], 2);
+                    salary = Math.Round(salary * Common.allowance[Common.allowance.Length - 1 - i], 2);
                     break;
                 }
             }
 
-            const double INCOME_TAX_RATE = 19.0 / 100;
-            const double MILITARY_TAX_RATE = 1.5 / 100;
-            tax = Math.Round((INCOME_TAX_RATE + MILITARY_TAX_RATE) * salary, 2);
+            tax = Math.Round((Common.incomeTaxRate + Common.militaryTaxRate) * salary, 2);
         }
 
         public void Show()
