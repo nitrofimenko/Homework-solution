@@ -10,7 +10,7 @@ void ShowAllProducts(Product[] products, int productsNumber)
 }
 
 const int LIMIT = 100;
-ProductFabric productFabric = new ProductFabric();
+ProductFactory productFabric = new ProductFactory();
 Product[] products = new Product[LIMIT];
 Invoice[] invoice = new Invoice[1];
 int productsNumber = 0;
