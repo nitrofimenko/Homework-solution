@@ -23,7 +23,7 @@ namespace L02_07
         public void SetPosition(int positionNumber)
         {
             Position = Common.positions[positionNumber];
-            if (Experience != null && Position != null)
+            if (Position != null)
             {
                 CountSalaryAndTax();
             }
@@ -31,8 +31,8 @@ namespace L02_07
 
         public void SetExperience(double experience)
         {
-            Experience=experience;
-            if (Position != null && Experience!=null)
+            Experience = experience;
+            if (Position != null && Experience >= 0)
             {
                 CountSalaryAndTax();
             }
