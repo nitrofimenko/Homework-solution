@@ -22,13 +22,13 @@ namespace L02_07
             int choice = 0;
             do
             {
-                Console.WriteLine($"Position. Input one number from 0 to {Common.positions.Length}: ");
-                for (int i = 0; i < Common.positions.Length; i++)
+                Console.WriteLine($"Position. Input one number from 0 to {Common.Positions.Length}: ");
+                for (int i = 0; i < Common.Positions.Length; i++)
                 {
-                    Console.WriteLine($"{i} - {Common.positions[i]}");
+                    Console.WriteLine($"{i} - {Common.Positions[i]}");
                 }
                 Console.Write("Position: ");
-            } while (!int.TryParse(Console.ReadLine(), out choice) || choice < 0 || choice >= Common.positions.Length);
+            } while (!int.TryParse(Console.ReadLine(), out choice) || choice < 0 || choice >= Common.Positions.Length);
             newEmployee.SetPosition(choice);
 
             double experience = -1;

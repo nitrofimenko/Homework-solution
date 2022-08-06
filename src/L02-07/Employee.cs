@@ -22,10 +22,13 @@ namespace L02_07
         }
         public void SetPosition(int positionNumber)
         {
-            Position = Common.positions[positionNumber];
-            if (Position != null)
+            if (positionNumber >= 0)
             {
-                CountSalaryAndTax();
+                Position = Common.Positions[positionNumber];
+                if (Position != null)
+                {
+                    CountSalaryAndTax();
+                }
             }
         }
 
@@ -39,24 +42,24 @@ namespace L02_07
         }
         private void CountSalaryAndTax()
         {
-            for (int i = 0; i < Common.positions.Length; i++)
+            for (int i = 0; i < Common.Positions.Length; i++)
             {
-                if (Position == Common.positions[i])
+                if (Position == Common.Positions[i])
                 {
-                    salary = Common.salaries[i];
+                    salary = Common.Salaries[i];
                     break;
                 }
             }
-            for (int i = 0; i < Common.allowance.Length; i++)
+            for (int i = 0; i < Common.Allowance.Length; i++)
             {
-                if (Experience >= Common.experiences[Common.allowance.Length - 1 - i])
+                if (Experience >= Common.Experiences[Common.Allowance.Length - 1 - i])
                 {
-                    salary = Math.Round(salary * Common.allowance[Common.allowance.Length - 1 - i], 2);
+                    salary = Math.Round(salary * Common.Allowance[Common.Allowance.Length - 1 - i], 2);
                     break;
                 }
             }
 
-            tax = Math.Round((Common.incomeTaxRate + Common.militaryTaxRate) * salary, 2);
+            tax = Math.Round((Common.IncomeTaxRate + Common.MilitaryTaxRate) * salary, 2);
         }
 
         public void Show()
