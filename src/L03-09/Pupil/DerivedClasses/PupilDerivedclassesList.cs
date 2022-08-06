@@ -8,6 +8,6 @@ namespace L03_09.Pupil.DerivedClasses
 {
     internal class PupilDerivedclassesList
     {
-        public static readonly string[] Subclasses = { "ExcelentPupil", "GoodPupil", "BadPupil" };
+        public static readonly string[] DerivedClasses = { "ExcelentPupil", "GoodPupil", "BadPupil" };
     }
 }

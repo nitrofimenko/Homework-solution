@@ -12,12 +12,6 @@ internal class ClassRoom
     private static Random _random = new Random();
 
     private Pupil[] classmates;
-    public ClassRoom(Pupil pupil1)
-    {
-        classmates = new Pupil[classmatesNumber];
-        classmates[0] = pupil1;
-        FillClass(1);
-    }
     public ClassRoom(Pupil pupil1, Pupil pupil2)
     {
         classmates = new Pupil[classmatesNumber];
@@ -25,11 +19,19 @@ internal class ClassRoom
         classmates[1] = pupil2;
         FillClass(2);
     }
+    public ClassRoom(Pupil pupil1, Pupil pupil2,Pupil pupil3)
+    {
+        classmates = new Pupil[classmatesNumber];
+        classmates[0] = pupil1;
+        classmates[1] = pupil2;
+        classmates[2] = pupil3;
+        FillClass(3);
+    }
     private void FillClass(int lastClassmate)
     {
         for (int i = lastClassmate; i < classmatesNumber; i++)
         {
-            switch (PupilDerivedclassesList.Subclasses[_random.Next(PupilDerivedclassesList.Subclasses.Length)])
+            switch (PupilDerivedclassesList.DerivedClasses[_random.Next(PupilDerivedclassesList.DerivedClasses.Length)])
             {
                 case "ExcelentPupil":
                     classmates[i] = new DerivedClasses.ExcelentPupil();
