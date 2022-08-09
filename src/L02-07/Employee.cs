@@ -22,20 +22,25 @@ namespace L02_07
         }
         public void SetPosition(int positionNumber)
         {
-            if (positionNumber >= 0)
+            var length = Common.Positions.Length;
+            if (positionNumber > length - 1 || positionNumber < 0)
             {
-                Position = Common.Positions[positionNumber];
-                if (Position != null)
-                {
-                    CountSalaryAndTax();
-                }
+                Console.WriteLine("positionNumber is out of scope of available values");
+                return;
             }
+            Position = Common.Positions[positionNumber];
+            CountSalaryAndTax();
         }
 
         public void SetExperience(double experience)
         {
+            if (experience < 0)
+            {
+                Console.WriteLine("Experience can't be less that 0.");
+                return;
+            }
             Experience = experience;
-            if (Position != null && Experience >= 0)
+            if (Position != null)
             {
                 CountSalaryAndTax();
             }
