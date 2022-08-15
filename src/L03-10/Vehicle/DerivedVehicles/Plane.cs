@@ -6,17 +6,12 @@ using System.Threading.Tasks;
 
 namespace L03_10.Vehicle.DerivedVehicles
 {
-    internal class Plane:Vehicle
+    internal class Plane : Vehicle
     {
         private double altitude;
         private int numberOfPassengers;
-        public Plane(double x, double y, double price, double speed, int yearOfManufacture, double altitude, int numberOfPassengers)
+        public Plane(double x, double y, double price, double speed, int yearOfManufacture, double altitude, int numberOfPassengers) : base(x, y, price, speed, yearOfManufacture)
         {
-            this.x = x;
-            this.y = y;
-            this.price = price;
-            this.speed = speed;
-            this.yearOfManufacture = yearOfManufacture;
             this.altitude = altitude;
             this.numberOfPassengers = numberOfPassengers;
         }

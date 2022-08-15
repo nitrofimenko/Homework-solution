@@ -13,6 +13,16 @@ namespace L03_10.Vehicle
         protected double price = 0;
         protected double speed = 0;
         protected double yearOfManufacture = 0;
+        public Vehicle() { }
+        protected Vehicle(double x, double y, double price, double speed, double yearOfManufacture)
+        {
+            this.x = x;
+            this.y = y;
+            this.price = price;
+            this.speed = speed;
+            this.yearOfManufacture = yearOfManufacture;
+        }
+
         public virtual void Show()
         {
             Console.Write($"x = {x}, y = {y}, price = {price}, speed = {speed}, year of manufacture: {yearOfManufacture}");
