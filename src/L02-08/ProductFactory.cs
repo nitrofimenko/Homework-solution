@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace L02_08
 {
-    internal class ProductFabric
+    internal class ProductFactory
     {
         public Product CreateProduct()
         {

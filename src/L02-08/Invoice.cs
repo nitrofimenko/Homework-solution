@@ -8,13 +8,13 @@ namespace L02_08
 {
     internal class Invoice
     {
-        const double VAT = 19;
-        readonly int account;
-        readonly string customer;
-        readonly string provider;
-        string article;
-        int quantity;
-        double price;
+        private const double VAT = 19;
+        private readonly int account;
+        private readonly string customer;
+        private readonly string provider;
+        private string article;
+        private int quantity;
+        private double price;
         public Invoice(int account, string customer, string provider, string article, int quantity, double price)
         {
             this.account = account;
@@ -24,13 +24,17 @@ namespace L02_08
             this.quantity = quantity;
             this.price = price;
         }
-        double CalculateOrderCostWithVAT()
+        private double GetOrderCostWithVAT(bool withVAT)
         {
-            return Math.Round((double)quantity * price * (1 + VAT / 100), 2);
-        }
-        double CalculateOrderWithoutVAT()
-        {
-            return Math.Round((double)quantity * price, 2);
+            double cost = Math.Round((double)quantity * price, 2);
+            if (withVAT)
+            {
+                return Math.Round(cost * (1 + VAT / 100), 2);
+            }
+            else
+            {
+                return cost;
+            }
         }
         public void Show()
         {
@@ -41,9 +45,14 @@ namespace L02_08
             Console.WriteLine($"Article:  {article}");
             Console.WriteLine($"Quantity: {quantity}");
             Console.WriteLine($"Price:    {price}");
-            Console.WriteLine($"Sum without VAT: {CalculateOrderWithoutVAT()}");
-            Console.WriteLine($"VAT:             {Math.Round(CalculateOrderCostWithVAT() - CalculateOrderWithoutVAT(), 2)}");
-            Console.WriteLine($"Sum with VAT:    {CalculateOrderCostWithVAT()}");
+
+            // Why "private double test;" is wrong?
+            double orderCostWithoutVAT = GetOrderCostWithVAT(false);
+            double orderCostWithVAT = GetOrderCostWithVAT(true);
+
+            Console.WriteLine($"Sum without VAT: {orderCostWithoutVAT}");
+            Console.WriteLine($"VAT:             {Math.Round(orderCostWithVAT - orderCostWithoutVAT,2)}");
+            Console.WriteLine($"Sum with VAT:    {orderCostWithVAT}");
         }
     }
 }
