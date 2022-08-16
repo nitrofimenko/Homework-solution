@@ -14,7 +14,7 @@ namespace L03_11
         }
         public override void SaveDocument()
         {
-            Console.WriteLine("Document swved in old format, saving in another formats available in Expert version.");
+            Console.WriteLine("Document saved in old format, saving in another formats available in Expert version.");
         }
     }
 }
