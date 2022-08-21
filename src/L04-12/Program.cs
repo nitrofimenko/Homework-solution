@@ -1,9 +1,10 @@
 ﻿using L04_12.AbstractHandler;
 using L04_12.AbstractHandler.DerivedClasses;
+using System.Security.Claims;
 
-AbstractHandler ReturnHandler(Document document)
+AbstractHandler GetHandler(DocumentType documentType)
 {
-    switch (document.TypeOfDocument)
+    switch (documentType)
     {
         case DocumentType.XML:
             return new XMLHandler();
@@ -16,23 +17,16 @@ AbstractHandler ReturnHandler(Document document)
     }
 }
 
-Document document;
 AbstractHandler handler;
-DocumentType[] documentTypes =
+Document document;
+foreach (DocumentType documentType in Enum.GetValues(typeof(DocumentType)))
 {
-    DocumentType.XML,
-    DocumentType.TXT,
-    DocumentType.DOC
-};
-foreach (var dt in documentTypes)
-{
-    document = new Document(dt);
-    handler = ReturnHandler(document);
-    Console.WriteLine($"{dt} document");
-    handler.Open();
-    handler.Create();
-    handler.Change();
-    handler.Save();
+    document = new Document(documentType, GetHandler(documentType));
+    Console.WriteLine($"{documentType} document");
+    document.Handler.Open();
+    document.Handler.Create();
+    document.Handler.Change();
+    document.Handler.Save();
     Console.WriteLine();
 }
 
@@ -41,12 +35,4 @@ enum DocumentType
     XML,
     TXT,
     DOC
-}
-struct Document
-{
-    public DocumentType TypeOfDocument;
-    public Document(DocumentType typeOfDocument)
-    {
-        TypeOfDocument = typeOfDocument;
-    }
 }
