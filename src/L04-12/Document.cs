@@ -9,10 +9,24 @@ using L04_12.AbstractHandler.DerivedClasses;
 internal class Document
 {
     public DocumentType DocumentType { get; }
-    public AbstractHandler Handler;
-    public Document(DocumentType documentType, AbstractHandler handler)
+    public AbstractHandler Handler { get; }
+    public Document(DocumentType documentType)
     {
         DocumentType = documentType;
-        Handler = handler;
+        switch (DocumentType)
+        {
+            case DocumentType.XML:
+                Handler = new XMLHandler();
+                break;
+            case DocumentType.TXT:
+                Handler = new TXTHandler();
+                break;
+            case DocumentType.DOC:
+                Handler = new DOCHandler();
+                break;
+            default:
+                Handler = new TXTHandler();
+                break;
+        }
     }
 }
