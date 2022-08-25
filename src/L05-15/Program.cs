@@ -1,40 +1,18 @@
 ﻿using System.Globalization;
+using L05_15;
 
 const int N = 20;
-int[] array = new int[N];
-Random rnd = new Random();
-
-for (int i = 0; i < array.Length; i++)
-{
-    array[i] = rnd.Next();
-}
-
-int max = array[0];
-int min = array[0];
-long sum = array[0];
-for (int i = 1; i < array.Length; i++)
-{
-    sum += array[i];
-    if (array[i] > max)
-    {
-        max = array[i];
-    }
-    else if (array[i] < min)
-    {
-        min = array[i];
-    }
-}
+Dimension dimension = new Dimension(N);
 
 NumberFormatInfo nfi = new CultureInfo("").NumberFormat;
 nfi.NumberGroupSeparator = " ";
-Console.WriteLine($"Maximum array element = {max.ToString("N0", nfi)}");
-Console.WriteLine($"Minimum array element = {min.ToString("N0", nfi)}");
-Console.WriteLine($"Total sum of array elements = {sum.ToString("N0", nfi)}");
+Console.WriteLine($"Maximum array element = {dimension.GetMaximum().ToString("N0", nfi)}");
+Console.WriteLine($"Minimum array element = {dimension.GetMinimum().ToString("N0", nfi)}");
+Console.WriteLine($"Total sum of array elements = {dimension.GetSum().ToString("N0", nfi)}");
 Console.WriteLine($"All odd elements in array:");
-for (int i = 0; i < array.Length; i++)
+int[,] dimensionOddElements = dimension.GetOddElements();
+for (int i = 0; i < dimensionOddElements.GetLength(0); i++)
 {
-    if (array[i] % 2 != 0)
-    {
-        Console.WriteLine($"array[{i}] = {array[i].ToString("N0", nfi)}");
-    }
+    Console.WriteLine($"array[{dimensionOddElements[i,0]}] = " +
+        $"{dimensionOddElements[i,1].ToString("N0",nfi)}");
 }
