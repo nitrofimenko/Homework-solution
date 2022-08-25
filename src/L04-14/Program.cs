@@ -12,6 +12,3 @@ footer.Content = "Директор: Иванов И.И.";
 
 Document document = new Document(title, body, footer);
 document.Show();
-
-// Delay.
-//Console.ReadKey();
