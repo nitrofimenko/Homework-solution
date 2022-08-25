@@ -6,9 +6,8 @@ using System.Threading.Tasks;
 
 namespace L04_14.Document.Parts
 {
-    internal abstract class Parts
+    internal abstract class Part
     {
-        protected string content;
         public abstract string Content { protected get; set; }
         public abstract void Show();
     }

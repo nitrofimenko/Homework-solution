@@ -6,10 +6,9 @@ using System.Threading.Tasks;
 
 namespace L04_14.Document.Parts
 {
-    internal class Body:Parts
+    internal class Body:Part
     {
-        //string content;
-
+        private string content;
         public override string Content
         {
             protected get
@@ -21,7 +20,6 @@ namespace L04_14.Document.Parts
             }
             set => content = value;
         }
-
         public override void Show()
         {
             Console.ForegroundColor = ConsoleColor.Blue;

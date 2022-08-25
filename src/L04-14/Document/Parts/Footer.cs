@@ -6,8 +6,9 @@ using System.Threading.Tasks;
 
 namespace L04_14.Document.Parts
 {
-    internal class Footer : Parts
+    internal class Footer : Part
     {
+        private string content;
         public override string Content
         {
             protected get
@@ -19,7 +20,6 @@ namespace L04_14.Document.Parts
             }
             set => content = value;
         }
-
         public override void Show()
         {
             Console.ForegroundColor = ConsoleColor.Green;
