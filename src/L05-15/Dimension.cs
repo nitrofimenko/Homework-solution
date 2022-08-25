@@ -95,5 +95,25 @@ namespace L05_15
             }
             return sum;
         }
+        public int[,] GetOddElements()
+        {
+            int[,] temp = new int[dimension.Length, 2];
+            int numberOfOddElements = 0;
+            
+            for (int i = 0; i < dimension.Length; i++)
+            {
+                if (dimension[i] % 2 != 0)
+                {
+                    temp[numberOfOddElements, 0] = i;
+                    temp[numberOfOddElements, 1] = dimension[i];
+                    numberOfOddElements++;
+                }
+            }
+                        
+            int[,] oddElements = new int[numberOfOddElements, 2];
+            Array.Copy(temp, oddElements, numberOfOddElements * 2);
+            
+            return oddElements;
+        }
     }
 }

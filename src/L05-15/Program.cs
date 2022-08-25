@@ -10,10 +10,9 @@ Console.WriteLine($"Maximum array element = {dimension.GetMaximum().ToString("N0
 Console.WriteLine($"Minimum array element = {dimension.GetMinimum().ToString("N0", nfi)}");
 Console.WriteLine($"Total sum of array elements = {dimension.GetSum().ToString("N0", nfi)}");
 Console.WriteLine($"All odd elements in array:");
-for (int i = 0; i < dimension.Length; i++)
+int[,] dimensionOddElements = dimension.GetOddElements();
+for (int i = 0; i < dimensionOddElements.GetLength(0); i++)
 {
-    if (dimension[i] % 2 != 0)
-    {
-        Console.WriteLine($"array[{i}] = {dimension[i].ToString("N0", nfi)}");
-    }
+    Console.WriteLine($"array[{dimensionOddElements[i,0]}] = " +
+        $"{dimensionOddElements[i,1].ToString("N0",nfi)}");
 }
