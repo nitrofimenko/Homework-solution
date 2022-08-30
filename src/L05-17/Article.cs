@@ -8,22 +8,22 @@ namespace L05_17
 {
     internal class Article
     {
-        private string productName;
+        private string articleName;
         private string storeName;
         private decimal price;
-        public Article(string productName, string storeName, decimal price)
+        public Article(string articleName, string storeName, decimal price)
         {
-            this.productName = productName;
+            this.articleName = articleName;
             this.storeName = storeName;
             this.price = price;
         }
         public void Show()
         {
-            Console.WriteLine($"{productName}. Price in {storeName}: {price} UAH.");
+            Console.WriteLine($"{articleName}. Price in {storeName}: {price} UAH.");
         }
-        public bool IsProductNameRight(string name)
+        public bool IsArticleNameRight(string name, int symbolsNumberToMatchFull = 3)
         {
-            return name.Length < 3 ? productName.ToLower() == name.ToLower() : productName.ToLower().Contains(name.ToLower());
+            return name.Length < symbolsNumberToMatchFull ? articleName.ToLower() == name.ToLower() : articleName.ToLower().Contains(name.ToLower());
         }
     }
 }

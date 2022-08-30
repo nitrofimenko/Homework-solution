@@ -48,12 +48,12 @@ namespace L05_17
                 Console.WriteLine($"Invalid index. Valid index is from 0 to {articles.Length - 1}");
             }
         }
-        public void ShowArticle(string s)
+        public void ShowArticle(string articleName)
         {
             bool founded = false;
             for (int i = 0; i < articles.Length; i++)
             {
-                if (articles[i].IsProductNameRight(s))
+                if (articles[i].IsArticleNameRight(articleName))
                 {
                     articles[i].Show();
                     founded = true;
@@ -61,7 +61,7 @@ namespace L05_17
             }
             if (!founded)
             {
-                Console.WriteLine($"No {s} article in this store. Try \"Pizza <Name>\"");
+                Console.WriteLine($"No {articleName} article in this store. Try \"Pizza <Name>\"");
             }
         }
     }
