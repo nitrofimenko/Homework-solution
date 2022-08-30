@@ -10,7 +10,7 @@ namespace L05_16
     internal class MyMatrix
     {
         private int[,] myMatrix;
-        public MyMatrix(int rows, int columns, bool random = false, int minValue = Int32.MinValue, int maxValue = Int32.MaxValue)
+        public MyMatrix(int rows, int columns, bool random = false, int minValue = 0, int maxValue = Int32.MaxValue)
         {
             if (rows < 0)
             {
@@ -21,27 +21,30 @@ namespace L05_16
                 columns = 0;
             }
             myMatrix = new int[rows, columns];
-            if (random)
+            myMatrix = random ? FillRandomMatrix(minValue, maxValue) : FillDefaultMatrix();
+        }
+        private int[,] FillRandomMatrix(int minValue, int maxValue)
+        {
+            Random rnd = new Random();
+            for (int i = 0; i < myMatrix.GetLength(0); i++)
             {
-                Random rnd = new Random();
-                for (int i = 0; i < myMatrix.GetLength(0); i++)
+                for (int j = 0; j < myMatrix.GetLength(1); j++)
                 {
-                    for (int j = 0; j < myMatrix.GetLength(1); j++)
-                    {
-                        myMatrix[i, j] = rnd.Next(minValue, maxValue);
-                    }
+                    myMatrix[i, j] = rnd.Next(minValue, maxValue);
                 }
             }
-            else
+            return myMatrix;
+        }
+        private int[,] FillDefaultMatrix()
+        {
+            for (int i = 0; i < myMatrix.GetLength(0); i++)
             {
-                for (int i = 0; i < myMatrix.GetLength(0); i++)
+                for (int j = 0; j < myMatrix.GetLength(1); j++)
                 {
-                    for (int j = 0; j < myMatrix.GetLength(1); j++)
-                    {
-                        myMatrix[i, j] = i * 10 + j;
-                    }
+                    myMatrix[i, j] = i * 10 + j;
                 }
             }
+            return myMatrix;
         }
         public int[,] GetMatrix()
         {
