@@ -29,8 +29,7 @@ while (choice != "0")
     Console.WriteLine("5. Resize matrix 1 type.");
     Console.WriteLine("6. Resize matrix 2 type.");
     Console.WriteLine("7. Show part of matrix.");
-    Console.WriteLine("8. Get matrix.");
-    Console.WriteLine("9. Get matrix size.");
+    Console.WriteLine("8. Get matrix dimensions.");
     Console.WriteLine("0. Break.");
     Console.WriteLine("Your choice: ");
     choice = Console.ReadLine();
@@ -132,24 +131,6 @@ while (choice != "0")
             Console.ReadKey();
             break;
         case "8":
-            Console.WriteLine($"\nTest matrix {rows}x{columns} ({rows} rows, {columns} columns):");
-            test.ShowMatrix();
-
-            int[,] x = test.GetMatrix();
-            Console.WriteLine("\nx = matrix:");
-            for (int i = 0; i < x.GetLength(0); i++)
-            {
-                for (int j = 0; j < x.GetLength(1); j++)
-                {
-                    Console.Write($"{x[i, j],4}");
-                }
-                Console.WriteLine();
-            }
-
-            Console.WriteLine("\nStrike a key");
-            Console.ReadKey();
-            break;
-        case "9":
             Console.WriteLine($"\nTest matrix {rows}x{columns} ({rows} rows, {columns} columns):");
             test.ShowMatrix();
 

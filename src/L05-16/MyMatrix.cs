@@ -21,9 +21,16 @@ namespace L05_16
                 columns = 0;
             }
             myMatrix = new int[rows, columns];
-            myMatrix = random ? FillRandomMatrix(minValue, maxValue) : FillDefaultMatrix();
+            if (random)
+            {
+                FillRandomMatrix(minValue, maxValue);
+            }
+            else
+            {
+                FillDefaultMatrix();
+            }
         }
-        private int[,] FillRandomMatrix(int minValue, int maxValue)
+        private void FillRandomMatrix(int minValue, int maxValue)
         {
             Random rnd = new Random();
             for (int i = 0; i < myMatrix.GetLength(0); i++)
@@ -33,9 +40,8 @@ namespace L05_16
                     myMatrix[i, j] = rnd.Next(minValue, maxValue);
                 }
             }
-            return myMatrix;
         }
-        private int[,] FillDefaultMatrix()
+        private void FillDefaultMatrix()
         {
             for (int i = 0; i < myMatrix.GetLength(0); i++)
             {
@@ -44,13 +50,6 @@ namespace L05_16
                     myMatrix[i, j] = i * 10 + j;
                 }
             }
-            return myMatrix;
-        }
-        public int[,] GetMatrix()
-        {
-            int[,] temp = new int[myMatrix.GetLength(0), myMatrix.GetLength(1)];
-            Array.Copy(myMatrix, temp, myMatrix.Length);
-            return temp;
         }
         public int GetRowsNumber() => myMatrix.GetLength(0);
         public int GetColumnsNumber() => myMatrix.GetLength(1);
