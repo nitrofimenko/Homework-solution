@@ -10,8 +10,7 @@ namespace L06_19
     {
         public static void FindNext(string str)
         {
-            Book book = new Book();
-            book.FindNext(str);
+            Console.WriteLine("Find string: " + str);
         }
     }
 }

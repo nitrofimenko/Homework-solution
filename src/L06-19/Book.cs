@@ -10,7 +10,7 @@ namespace L06_19
     {
         public void FindNext(string str)
         {
-            Console.WriteLine("Find string: " + str);
+            FindAndReplaceManager.FindNext(str);
         }
     }
 }

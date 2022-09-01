@@ -1,3 +1,4 @@
 ﻿using L06_19;
 
-FindAndReplaceManager.FindNext("test");
+Book book = new Book();
+book.FindNext("test");
