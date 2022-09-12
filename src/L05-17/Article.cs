@@ -11,6 +11,7 @@ namespace L05_17
         private string articleName;
         private string storeName;
         private decimal price;
+        public string ArticleName { get => articleName; }
         public Article(string articleName, string storeName, decimal price)
         {
             this.articleName = articleName;
@@ -20,10 +21,6 @@ namespace L05_17
         public void Show()
         {
             Console.WriteLine($"{articleName}. Price in {storeName}: {price} UAH.");
-        }
-        public bool IsArticleNameRight(string name, int symbolsNumberToMatchFull = 3)
-        {
-            return name.Length < symbolsNumberToMatchFull ? articleName.ToLower() == name.ToLower() : articleName.ToLower().Contains(name.ToLower());
         }
     }
 }
