@@ -8,49 +8,55 @@ namespace L06_20
 {
     internal class Book
     {
+        private const int NOTES_LIMIT = 100;
+        private Notes[] notes = new Notes[NOTES_LIMIT];
+        private int noteMaxNumber = -1;
         public void FindNext(string str)
         {
             Console.WriteLine("Поиск строки : " + str);
         }
-        public int AddNote(string note) => Notes.AddNote(note);
-        public void ChangeNote(int index, string note) => Notes.ChangeNote(index, note);
-        public string GetNote(int index) => Notes.GetNote(index);
-        public void ShowNote(int index) => Notes.ShowNote(index);
-        private static class Notes
+        public int AddNote(string note)
         {
-            private static string[] notes = new string[100];
-            private static int noteMaxNumber = -1;
-            public static int AddNote(string note)
+            noteMaxNumber++;
+            notes[noteMaxNumber] = new Notes(note);
+            return noteMaxNumber;
+        }
+        public void ChangeNote(int index, string note)
+        {
+            if (index >= 0 && index <= noteMaxNumber)
             {
-                notes[++noteMaxNumber] = note;
-                return noteMaxNumber;
+                notes[index].ChangeNote(note);
             }
-            public static void ChangeNote(int index, string note)
+        }
+        public string GetNote(int index)
+        {
+            if (index >= 0 && index <= noteMaxNumber)
             {
-                if (index >= 0 && index <= noteMaxNumber)
-                {
-                    notes[index] = note;
-                }
+                return notes[index].GetNote();
             }
-            public static string GetNote(int index) => (noteMaxNumber < 0 || index < 0 || index > noteMaxNumber) ? "" : notes[index];
-            public static void ShowNote(int index)
+            else
             {
-                if (noteMaxNumber < 0)
-                {
-                    Console.WriteLine("No notes");
-                }
-                else
-                {
-                    if (index < 0 || index > noteMaxNumber)
-                    {
-                        Console.WriteLine($"Not have note #{index}");
-                    }
-                    else
-                    {
-                        Console.WriteLine($"Note #{index}: {notes[index]}");
-                    }
-                }
+                return String.Format($"No note with #{index}.");
             }
+        }
+        public void ShowNote(int index)
+        {
+            if (index >= 0 && index <= noteMaxNumber)
+            {
+                notes[index].ShowNote();
+            }
+            else
+            {
+                Console.WriteLine($"No note with #{index}.");
+            }
+        }
+        protected class Notes
+        {
+            private string note;
+            public Notes(string note) => this.note = note;
+            public void ChangeNote(string note) => this.note = note;
+            public string GetNote() => note;
+            public void ShowNote() => Console.WriteLine(note);
         }
     }
 }
