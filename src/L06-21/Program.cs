@@ -9,5 +9,5 @@ test.Show();
 test.Sort();
 test.Show();
 
-test.Sort("Descending");
+test.Sort(SortDirection.Descending);
 test.Show();

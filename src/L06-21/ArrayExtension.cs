@@ -9,22 +9,19 @@ namespace L06_21
 {
     internal static class ArrayExtension
     {
-        public static int[] Sort(this int[] array, string direction = "Ascending")
+        public static int[] Sort(this int[] array, SortDirection direction = SortDirection.Ascending)
         {
-            if (direction == "Ascending" || direction == "Descending")
+            int temp;
+            for (int i = 0; i < array.Length - 1; i++)
             {
-                int temp;
-                for (int i = 0; i < array.Length - 1; i++)
+                if (direction == SortDirection.Ascending ? array[i + 1] < array[i] : array[i + 1] > array[i])
                 {
-                    if (direction == "Ascending" ? array[i + 1] < array[i] : array[i + 1] > array[i])
+                    temp = array[i];
+                    array[i] = array[i + 1];
+                    array[i + 1] = temp;
+                    if (i > 0)
                     {
-                        temp = array[i];
-                        array[i] = array[i + 1];
-                        array[i + 1] = temp;
-                        if (i > 0)
-                        {
-                            i -= 2;
-                        }
+                        i -= 2;
                     }
                 }
             }
