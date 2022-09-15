@@ -53,7 +53,7 @@ namespace L05_17
             bool founded = false;
             for (int i = 0; i < articles.Length; i++)
             {
-                if (articles[i].IsArticleNameRight(articleName))
+                if (Lib.QueryIsRight(articleName, articles[i].ArticleName))
                 {
                     articles[i].Show();
                     founded = true;
