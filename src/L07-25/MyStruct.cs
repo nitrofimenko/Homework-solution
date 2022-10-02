@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace L07_25
 {
-    internal class MyStruct
+    internal struct MyStruct
     {
         public string change;
     }

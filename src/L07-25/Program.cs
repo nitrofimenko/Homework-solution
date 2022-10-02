@@ -9,14 +9,14 @@ static void StructTaker(MyStruct myStruct)
     myStruct.change = "changed";
 }
 
-MyStruct myStruct = new MyStruct();
+MyStruct myStruct;
 MyClass myClass = new MyClass();
 
 myStruct.change = "non changed";
 myClass.change = "non changed";
 
-StructTaker(myStruct);
-ClassTaker(myClass);
+StructTaker(myStruct); // by val
+ClassTaker(myClass);   // by ref
 
 Console.WriteLine($"Struct field \"change\" value: {myStruct.change}");
 Console.WriteLine($"Class field \"change\" value: {myClass.change}");
