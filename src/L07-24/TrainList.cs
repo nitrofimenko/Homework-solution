@@ -36,11 +36,7 @@ namespace L07_24
             trains[trainsNumber] = TrainFactory.CreateTrain(trainsNumber);
             trainsNumber++;
         }
-        public void SortByTrainNumber()
-        {
-            IEnumerable<Train> query = trains.OrderBy(train => train.TrainNumber);
-            trains = query.ToArray();
-        }
+        public void SortByTrainNumber() => trains = trains.OrderBy(train => train.TrainNumber).ToArray();
         public void SearchAndShow(int trainNumber)
         {
             bool noMatches = true;
