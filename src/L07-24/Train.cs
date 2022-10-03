@@ -8,19 +8,18 @@ namespace L07_24
 {
     struct Train
     {
-        private string destination;
-        private string trainNumber;
-        private DateTime departureTime;
-        public string TrainNumber { get { return trainNumber; } }
-        public Train(string destination,string trainNumber,DateTime departureTime)
+        private string Destination { get; }
+        public int TrainNumber { get; }
+        private DateTime DepartureTime { get; }
+        public Train(string destination,int trainNumber,DateTime departureTime)
         {
-            this.destination = destination;
-            this.trainNumber = trainNumber;
-            this.departureTime = departureTime;
+            Destination = destination;
+            TrainNumber = trainNumber;
+            DepartureTime = departureTime;
         }
         public void Show()
         {
-            Console.WriteLine($"Destination: {destination}\nTrain number: {trainNumber}\nDeparture time: {departureTime:H:mm}");
+            Console.WriteLine($"Destination: {Destination}\tTrain number: {TrainNumber}\tDeparture time: {DepartureTime:H:mm}");
         }
     }
 }
