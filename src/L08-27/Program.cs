@@ -1,3 +1,3 @@
 ﻿using L08_27;
 
-ColorString.Print(ColorString.GetString(), ColorString.GetColor());
+Printer.Print(UserInterface.GetString(), UserInterface.GetColor());
