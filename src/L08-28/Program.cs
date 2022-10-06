@@ -10,6 +10,6 @@ while (choice != "0")
 {
     Post worker = (Post)post[random.Next(post.Length)];
     int hours = random.Next(post.Min(), post.Max());
-    Console.Write($"{char.ToUpper(worker.ToString()[0]) + worker.ToString().Substring(1),-20}\t{hours,3} hrs (min - {(int)worker})\t{Accauntant.AskForBonus(worker, hours)}  ");
+    Console.Write($"{worker,-20}\t{hours,3} hrs (min - {(int)worker})\t{Accauntant.AskForBonus(worker, hours)}  ");
     choice = Console.ReadLine();
 }
